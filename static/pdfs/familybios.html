@@ -1,0 +1,157 @@
+<style type="text/css">
+    .text {
+        color: #b17d41;
+    }
+
+    .w-10 {
+        text-align: center;
+        margin-top: 5%;
+        margin-bottom: 3%;
+    }
+
+    .w-20 {
+        text-align: center;
+        margin-top: 10%;
+    }
+
+    .p-font-size {
+        font-size: 28px;
+    }
+
+    .row {
+        display: contents;
+    }
+
+    .pfbg {
+        background: #22272E;
+    }
+
+    .w-100 {
+        width: 100%;
+    }
+
+    .blue {
+        color: #118ab2;
+    }
+
+    .darkblue {
+        color: #073b4c;
+    }
+
+    .bluenew {
+        color: #175f87;
+    }
+
+    .orange {
+        color: #ffd166;
+    }
+</style>
+
+<page backtop="7mm" backbottom="10mm" backleft="10mm" orientation="P" backright="10mm"
+    backimg="{{ member.image }}" backimgx="1.5mm" backimgh="10mm" backimgw="100%"
+    style="font-family:times, serif">
+    <page_header>
+    </page_header>
+    <page_footer>
+        <table class="page_footer row pfbg" cellpadding="12" cellspacing="0">
+            <tr>
+                <td style="width: 50%; color: #fff; font-size: 18px;padding: 10px auto 10px 10px;"> The
+                    {{ user_lname }} Family Handbook</td>
+                <td style="width: 10%; color: #fff; font-size: 18px;padding: 10px 10px 10px auto;">[[page_cu]]</td>
+                <td style="width: 10%"></td>
+                <td style="width: 30%; color: #fff; font-size: 18px;padding: 10px 10px 10px 10px;"></td>
+            </tr>
+        </table>
+    </page_footer>
+    <table class="row w-100" cellpadding="12" cellspacing="0">
+        <tr>
+            <td style="width: 100%; text-align: center;">
+                <h1 style="font-weight: bold; font-size: 100px;">The</h1>
+            </td>
+        </tr>
+        <tr>
+            <td class="bluenew" style="width: 100%; text-align: center; font-weight: bold; font-size: 50px;">
+                {{ user_lname }}</td>
+        </tr>
+        <tr>
+            <td style="width: 100%; font-weight: 100; font-size: 50px; text-align: center;">Family Members</td>
+        </tr>
+    </table>
+
+    {% for member in family_members %}
+    <div>
+        <table style="margin-top: 30px" class="row w-100" cellpadding="12" cellspacing="0">
+            
+            <tr>
+                <td class="blue" style="width: 20%;font-size: 18px;"></td>
+                <td colspan="3" class="blue"
+                    style="width: 100%; padding: 5px; font-size: 35px;font-weight: bold;">
+                    {{ member.fname }} {{ member.lname }}
+                </td>
+            </tr>
+            <tr>
+
+                <td class="blue" rowspan="3" style="width: 10%;">
+                    <div
+                        style="border:3px solid; width:150px; height: 150px; border-radius: 75px; background-image: url({{ member.image }}); background-repeat: no-repeat; background-position: center;">
+                    </div>
+                   
+                </td>
+
+                <td class="blue" style="width: 20%;font-size: 18px;text-align: ">
+                    <span style="font-weight: bold;">Family Role:</span> <br> <span
+                        style="color: #000;"> {{ member.family_role }}
+                    </span>
+                </td>
+
+                <td class="blue" style="width: 20%;font-size: 18px;">
+                    <span style="font-weight: bold;"> Birthday: </span> <br> <span
+                        style="color: #000;">{{ member.date_of_birth }}</span>
+                </td>
+
+            </tr>
+            <tr>
+                <td class="blue" style="width: 20%;font-size: 18px;">
+                    <span style="font-weight: bold;">Lives In:</span> <br> <span
+                        style="color: #000;">{{ member.lives_in }}</span>
+                </td>
+                <td class="blue" style="width: 20%;font-size: 18px;">
+                    <span style="font-weight: bold;">Birth Place :</span> <br> <span
+                        style="color: #000;">{{ member.place_of_birth }}</span>
+                </td>
+            </tr>
+            <tr>
+                <td class="blue" style="width: 20%;font-size: 18px;">
+                    <span style="font-weight: bold;">Favorite Food:</span> <br> <span
+                        style="color: #000;">{{ member.fravorite_food }}</span>
+                </td>
+                <td class="blue" style="width: 20%;font-size: 18px;">
+                    <span style="font-weight: bold;">My Profession:</span> <br> <span
+                        style="color: #000;">{{ member.profession }}</span>
+                </td>
+            </tr>
+            <tr>
+                <td class="blue" rowspan="3" style="width: 10%;"></td>
+                <td class="blue" style="width: 20%;font-size: 18px;">
+                    <span style="font-weight: bold;">Favorite Holiday:</span> <br> <span
+                        style="color: #000;">{{ member.fravorite_holiday }}</span>
+                </td>
+                <td class="blue" style="width: 20%;font-size: 18px;">
+                    <span style="font-weight: bold;">Greatest Fear:</span> <br>
+                    <span
+                        style="color: #000;text-left">{{ member.greatest_fear }}</span>
+                </td>
+            </tr>
+        </table>
+        <table class="row w-100" cellpadding="12" cellspacing="0">
+            <tr>
+                <td style="width: 10%;"></td>
+                <td class="blue" style="width: 60%;font-size: 18px;"> <br>
+                    <span style="font-size: 18px;color:#000;"> {{ member.quote }} </span>
+                </td>
+            </tr>
+        </table>
+        <hr>
+    </div>
+    {% endfor %}
+<div>

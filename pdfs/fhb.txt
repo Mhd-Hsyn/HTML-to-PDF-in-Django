@@ -1,0 +1,60 @@
+https://fhb.dev-rr.xyz/signin
+raheelqazi326@gmail.com
+abcd1234
+
+1) Cover Page:
+pdf_url: https://fhb.dev-rr.xyz/storage/pdfs/My%20family/cover-page.pdf
+parts:
+- https://fhb.dev-rr.xyz/pdf-images/frame.png
+- https://fhb.dev-rr.xyz/pdf-images/backgrnd.png
+- https://fhb.dev-rr.xyz/pdf-images/transB.png
+
+2) Introduction:
+pdf_url: https://fhb.dev-rr.xyz/welcome/178
+parts:
+- https://fhb.dev-rr.xyz/pdf-images/backgrounds.png
+- https://fhb.dev-rr.xyz/pdf-images/Welcome.JPG
+
+3) Family Members (Bios):
+pdf_url: https://fhb.dev-rr.xyz/demo/family-bios.pdf
+parts:
+- https://fhb.dev-rr.xyz/pdf-images/backgrounds.png
+
+4) Core Value Statement:
+pdf_url: https://fhb.dev-rr.xyz/demo/core-values.pdf
+parts:
+- https://fhb.dev-rr.xyz/pdf-images/Cert.png
+- https://fhb.dev-rr.xyz/pdf-images/corevalue.png
+- https://fhb.dev-rr.xyz/pdf-images/box.png
+
+5) Mission Statement:
+pdf_url: https://fhb.dev-rr.xyz/demo/mission-statement.pdf
+parts:
+- https://fhb.dev-rr.xyz/pdf-images/missionstate.png
+
+6) Code Of Conduct:
+pdf_url: https://fhb.dev-rr.xyz/demo/code-of-conduct.pdf
+parts:
+- https://fhb.dev-rr.xyz/pdf-images/backgrounds.png
+- https://fhb.dev-rr.xyz/pdf-images/smallpoints.JPG
+- https://fhb.dev-rr.xyz/pdf-images/checkmark.png
+
+7) Family Media Agreement:
+pdf_url: https://fhb.dev-rr.xyz/demo/family-media-agreement.pdf
+parts:
+- https://fhb.dev-rr.xyz/pdf-images/backgrounds.png
+- https://fhb.dev-rr.xyz/pdf-images/combine.png
+- https://fhb.dev-rr.xyz/pdf-images/smallpoints.JPG
+
+8) Family Constitution:
+pdf_url: https://fhb.dev-rr.xyz/familyconstitution/178
+parts:
+- https://fhb.dev-rr.xyz/pdf-images/WhatsApp%20Image%202021-06-12%20at%207.43.39%20PM.jpeg
+- https://fhb.dev-rr.xyz/pdf-images/family-constitute.JPG
+- https://fhb.dev-rr.xyz/pdf-images/points.JPG
+
+9) Summary:
+pdf_url: https://fhb.dev-rr.xyz/contact/178
+parts:
+- https://fhb.dev-rr.xyz/pdf-images/backgrounds.png
+ 

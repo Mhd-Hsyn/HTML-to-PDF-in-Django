@@ -1,0 +1,259 @@
+<style type="text/css">
+    .text {
+        color: #b17d41;
+    }
+
+    .w-10 {
+        text-align: center;
+        margin-top: 5%;
+        margin-bottom: 3%;
+    }
+
+    .w-20 {
+        text-align: center;
+        margin-top: 10%;
+    }
+
+    .p-font-size {
+        font-size: 28px;
+    }
+
+    .row {
+        display: contents;
+    }
+
+    .pfbg {
+        background: #22272E;
+    }
+
+    .w-100 {
+        width: 100%;
+    }
+
+    .blue {
+        color: #118ab2;
+    }
+
+    .darkblue {
+        color: #073b4c;
+    }
+
+    .bluenew {
+        color: #175f87;
+    }
+
+    .orange {
+        color: #ffd166;
+    }
+
+</style>
+<page backtop="7mm" backbottom="10mm" backleft="10mm" orientation="P" backright="10mm"
+    backimg="{{ public_path('pdf-images/backgrounds.png') }}" backimgx="1.5mm" backimgh="10mm" backimgw="100%"
+    style="font-family:times, serif">
+    <page_header>
+    </page_header>
+    <page_footer>
+        <!-- <b>
+            [[page_cu]]
+        </b> -->
+        <table class="page_footer row pfbg" cellpadding="12" cellspacing="0">
+            <tr>
+                <td style="width: 50%; color: #fff; font-size: 18px;padding: 10px auto 10px 10px;"> The
+                    {!! $lastname !!} Family Handbook</td>
+                <td style="width: 10%; color: #fff; font-size: 18px;padding: 10px 10px 10px auto;">[[page_cu]]</td>
+                <td style="width: 10%"></td>
+                <td style="width: 30%; color: #fff; font-size: 18px;padding: 10px 10px 10px 10px;">
+                    @php $logo = public_path("storage/".$logo) @endphp
+                    @if (file_exists($logo))
+                        {{-- <img style="height: 40px" src="{{ $logo }}" alt=""> --}}
+                        {{-- <img src="{{ $logo }}" alt="" height="40"> --}}
+                        {{-- <p>Create Your Family Logo </p> --}}
+                    @endif
+                </td>
+            </tr>
+        </table>
+    </page_footer>
+    <!--<table class="page_header" cellpadding="12" cellspacing="0">-->
+    <!--    <tr>-->
+    <!--        <td class="orange" style="width: 100%; text-align: center; font-size: 35px; padding: 20px; color:#000;">-->
+    <!--            The <br> <span style="font-size: 35px;color: #073b4c;"> {{ $lastname }}</span>  <br/> Family Members-->
+    <!--        </td>-->
+    <!--    </tr>-->
+    <!--</table>-->
+    <table class="row w-100" cellpadding="12" cellspacing="0">
+        {{-- <tr>
+            <td style="width: 100%; text-align: center;">
+                <h1 style="font-weight: bold; font-size: 100px;">The</h1>
+            </td>
+        </tr> --}}
+        <tr>
+            <td class="bluenew" style="width: 100%; text-align: center; font-weight: bold; font-size: 50px;">
+                {{ $lastname }}</td>
+        </tr>
+        <tr>
+            <td style="width: 100%; font-weight: 100; font-size: 50px; text-align: center;">Family Members</td>
+        </tr>
+    </table>
+    @forelse ($familyBios['parents'] as $parent_member)
+        <div>
+            <table style="margin-top: 30px" class="row w-100" cellpadding="12" cellspacing="0">
+                <tr>
+                    <td class="blue" style="width: 20%;font-size: 18px;"></td>
+                    <td colspan="3" class="blue"
+                        style="width: 100%; padding: 5px; font-size: 35px;font-weight: bold;">
+                        {{ $parent_member['full_name'] }}
+                    </td>
+                </tr>
+                <tr>
+                    @php
+                        $isEven = false;
+                        $direction = $isEven ? 'right' : 'left';
+                        $margin = $isEven ? 'margin-left: 45px;' : 'margin-left: 30px;';
+                    @endphp
+                    <td class="blue" rowspan="3" style="width: 10%;">
+                        @if (!$isEven && !empty($parent_member['image']))
+                            <div
+                                style="border:3px solid; width:150px; height: 150px; border-radius: 75px; background-image: url({{ public_path('storage/' . $parent_member['image']) }}); background-repeat: no-repeat; background-position: center;">
+                            </div>
+                            {{-- <div style="border:3px solid; width:100px;">
+                                <img src="{{ public_path('storage/'.$parent_member['image']) }}" height="100" width="100" alt="">
+                            </div> --}}
+                        @endif
+                    </td>
+                    <td class="blue" style="width: 20%;font-size: 18px;text-align: {{ $direction }}">
+                        <span style="font-weight: bold;">Family Role:</span> <br> <span
+                            style="color: #000;">{{ ucwords($parent_member['relation'] == 'other' ? $parent_member['other_relation'] : $parent_member['relation']) }}
+                        </span>
+                    </td>
+                    <td class="blue" style="width: 20%;font-size: 18px;">
+                        <span style="font-weight: bold;"> Birthday: </span> <br> <span
+                            style="color: #000;">{{ \Carbon\Carbon::parse($parent_member['dob'])->format('M j, Y') }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="blue" style="width: 20%;font-size: 18px;">
+                        <span style="font-weight: bold;">Lives In:</span> <br> <span
+                            style="color: #000;">{{ $parent_member['city'] }}</span>
+                    </td>
+                    <td class="blue" style="width: 20%;font-size: 18px;">
+                        <span style="font-weight: bold;">Birth Place :</span> <br> <span
+                            style="color: #000;">{{ $parent_member['birth_city'] ?? '' }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="blue" style="width: 20%;font-size: 18px;">
+                        <span style="font-weight: bold;">Favorite Food:</span> <br> <span
+                            style="color: #000;">{{ $parent_member['favourite_food'] }}</span>
+                    </td>
+                    <td class="blue" style="width: 20%;font-size: 18px;">
+                        <span style="font-weight: bold;">My Profession:</span> <br> <span
+                            style="color: #000;">{{ $parent_member['profession'] }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="blue" rowspan="3" style="width: 10%;"></td>
+                    <td class="blue" style="width: 20%;font-size: 18px;">
+                        <span style="font-weight: bold;">Favorite Holiday:</span> <br> <span
+                            style="color: #000;">{{ $parent_member['favourite_holiday'] != 'other' ? $parent_member['favourite_holiday'] : $parent_member['other_favourite_holiday'] }}</span>
+                    </td>
+                    <td class="blue" style="width: 20%;font-size: 18px;">
+                        <span style="font-weight: bold;">Greatest Fear:</span> <br>
+                        <span
+                            style="color: #000;text-left">{{ $parent_member['afraid_of'] != 'other' ? $parent_member['afraid_of'] : $parent_member['other_afraid_of'] }}</span>
+                    </td>
+                </tr>
+            </table>
+            <table class="row w-100" cellpadding="12" cellspacing="0">
+                <tr>
+                    <td style="width: 10%;"></td>
+                    <td class="blue" style="width: 60%;font-size: 18px;"> <br>
+                        <span style="font-size: 18px;color:#000;">{{ $parent_member['favourite_quote'] }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="blue" style="width: 20%; padding-left: 15px;">
+                        @if ($isEven && !empty($parent_member['image']))
+                            <div style="border:3px solid; width:100px;">
+                                <img src="{{ public_path('storage/' . $parent_member['image']) }}" height="100"
+                                    width="100" alt="">
+                            </div>
+                        @endif
+                    </td>
+                </tr>
+            </table>
+            <hr>
+        </div>
+    @empty
+    {{-- No Parent Members --}}
+    @endforelse
+    @forelse ($familyBios['other_members'] as $other_member)
+    @if ($loop->first) <div class="mt-3"></div> @endif
+    {{-- <table  class="row w-100" cellpadding="12" cellspacing="0">
+    </table> --}}
+    <div>
+        <table class="row w-100" style="margin-top: 5px" cellpadding="12" cellspacing="0">
+            <tr>
+                <td class="blue" style="width: 20%; font-size: 18px;"></td>
+                <td colspan="3" class="blue" style="width: 100%; padding: 5px; font-size: 35px;font-weight: bold;">
+                    {{ $other_member['full_name'] }}
+                </td>
+            </tr>
+            <tr>
+                @php
+                    $isEven = false;
+                    $direction = ($isEven)?"right":"left";
+                    $margin = ($isEven)?"margin-left: 45px;":"margin-left: 30px;";
+                @endphp
+                <td class="blue" rowspan="3" style="width: 10%;">
+                    @if (!$isEven && !empty($other_member['image']))
+                        <div style="border:3px solid; width:150px; height: 150px; border-radius: 75px; background-image: url({{ public_path('storage/'.$other_member['image']) }}); background-repeat: no-repeat; background-position: center;"></div>
+                    @endif
+                </td>
+                <td class="blue" style="width: 20%; font-size: 18px;text-align: {{ $direction }}">
+                    <span style="font-weight: bold;">Family Role:</span> <br> <span style="color: #000;">{{ ucwords($other_member['relation'] != 'other'?$other_member['relation']:$other_member['other_relation']) }}</span>
+                </td>
+                <td class="blue" style="width: 20%;font-size: 18px;">
+                    <span style="font-weight: bold;"> Birthday: </span> <br> <span style="color: #000;">{{ \Carbon\Carbon::parse($other_member['dob'])->format('M j, Y') }}</span>
+                </td>
+            </tr>
+            <tr>
+                <td class="blue" style="width: 20%;font-size: 18px;">
+                    <span style="font-weight: bold;">Lives In:</span> <br> <span style="color: #000;">{{ $other_member['city'] }}</span>
+                </td>
+                <td class="blue" style="width: 20%;font-size: 18px;">
+                    <span style="font-weight: bold;">Birth Place:</span> <br> <span style="color: #000;">{{ $other_member['birth_city']??"" }}</span>
+                </td>
+            </tr>
+            <tr>
+                <td class="blue" style="width: 20%;font-size: 18px;">
+                    <span style="font-weight: bold;">Favorite Food:</span> <br> <span style="color: #000;">{{ $other_member['favourite_food'] }}</span>
+                </td>
+                <td class="blue" style="width: 20%;font-size: 18px;">
+                    <span style="font-weight: bold;">Favorite Attribute:</span> <br> <span style="color: #000;">{{ $other_member['best_attribute'] }}</span>
+                </td>
+            </tr>
+        </table>
+        <table class="row w-100" cellpadding="12" cellspacing="0">
+            <tr>
+                <td style="width: 10%;"></td>
+                <td class="blue" style="width: 60%;font-size: 18px;">
+                    <span style="font-size: 18px; color:#000;">{{ $other_member['second_best_attribute'] }}</span>
+                </td>
+            </tr>
+            <tr>
+                <td class="blue" style="width: 20%; padding-left: 15px;">
+                    @if ($isEven && !empty($other_member['image']))
+                         <div style="border:3px solid; width:100px;">
+                        <img src="{{ public_path('storage/'.$other_member['image']) }}" height="100" width="100" alt="">
+                        </div>
+                    @endif
+                </td>
+                <td class="blue" style="width: 60%;font-size: 18px; padding: 5px;"></td>
+            </tr>
+        </table>
+        <hr>
+    </div>
+    @empty
+    {{-- No Other Members --}}
+    @endforelse
+</page>

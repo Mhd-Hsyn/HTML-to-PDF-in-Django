@@ -1,0 +1,313 @@
+<style type="text/css">
+    .text {
+        color: #b17d41;
+    }
+
+    .w-10 {
+        text-align: center;
+        margin-top: 5%;
+        margin-bottom: 3%;
+    }
+
+    .w-20 {
+        text-align: center;
+        margin-top: 10%;
+    }
+
+    .p-font-size {
+        font-size: 24px;
+    }
+
+    .row {
+        display: contents;
+    }
+
+    .pfbg {
+        background: #22272E;
+    }
+
+    .w-100 {
+        width: 100%;
+    }
+
+    .blue {
+        color: #118ab2;
+    }
+
+    .darkblue {
+        color: #073b4c;
+    }
+
+    .orange {
+        color: #ffd166;
+    }
+    .mediaAgreement{
+        font-family: 'nunitolight'
+    }
+    li{
+        font-size: 22px
+    }
+</style>
+
+<page backtop="27mm" backbottom="7mm" class="mediaAgreement" backleft="10mm" orientation="P" backright="10mm" backimg="{{ public_path('pdf-images/backgrounds.png') }}" backimgx="1.5mm" backimgh="10mm" backimgw="100%">
+    <page_header>
+        <table class="page_header" cellpadding="12" cellspacing="0">
+            <tr>
+                <td style="text-transform: uppercase;color:#fff;width: 100%; text-align: center; background-color: #175f87; font-size: 30px; padding: 20px;">
+                    {{ $coverPage['lastname'] }} FAMILY MEDIA AGREEMENT
+                </td>
+            </tr>
+        </table>
+    </page_header>
+    <page_footer>
+        <!-- <b>
+            [[page_cu]]
+        </b> -->
+        <table class="page_footer row pfbg" cellpadding="12" cellspacing="0">
+            <tr>
+                <td style="width: 50%; color: #fff; font-size: 18px;padding: 10px auto 10px 10px;"> The {!! $coverPage['lastname'] !!} Family Handbook</td>
+                <td style="width: 10%; color: #fff; font-size: 18px;padding: 10px 10px 10px auto;">[[page_cu]]</td>
+                <td style="width: 10%"></td>
+                <td style="width: 30%; color: #fff; font-size: 18px;padding: 10px 10px 10px 10px;">
+                    @php $logo = public_path("storage/".$logo) @endphp
+                    @if (file_exists($logo))
+                        {{-- <img style="height: 40px" src="{{ $logo }}" alt=""> --}}
+                        {{-- <img src="{{ $logo }}" alt="" height="40"> --}}
+                        {{-- <p>Create Your Family Logo </p> --}}
+                    @endif
+                </td>
+            </tr>
+        </table>
+    </page_footer>
+    <table style="width: 100%; margin-top:0px;" class="row w-100" cellpadding="12" cellspacing="0">
+        <tr>
+            <td style="width:100%; text-align: center;"><img style="width:600px;" src="{{ public_path('pdf-images/combine.png')}}" alt="" width="500"></td>
+        </tr>
+    </table>
+    <table style="width: 100%;" class="row w-100" cellpadding="12" cellspacing="0">
+        <tr>
+            <td style="width:100%; text-align: center; padding-top: 22px; font-size: 30px; font-weight: bold;color:#175f87;">As an important member of the {!! $coverPage['lastname'] !!} Family, I agree to the following:</td>
+        </tr>
+    </table>
+    <table style="width: 100%;margin-top:25px;" class="row w-100" cellpadding="12" cellspacing="0">
+        <tr>
+            <td class="blue" style="width:30%;"></td>
+            {{-- <td class="blue" style="width:18%; text-align: center; font-size: 28px;">Family</td> --}}
+            {{-- <td class="blue" style="width:40%; text-align: center; font-size: 32px;"><u>Media Rules</u></td> --}}
+            {{-- <td class="blue" style="width:13%; text-align: center; font-size: 28px;">Rules</td> --}}
+        </tr>
+    </table>
+    {{-- <div class="blue">{!! $note !!}</div> --}}
+    <table style="width: 100%; margin-top: 10px; line-height: 1.3;" class="row w-100 blue" cellpadding="12" cellspacing="8">
+        @if(!empty($mediaAgreement['statement_one']))
+            <tr>
+                <td style="width:10%;" valign="top"><img src="{{ public_path('pdf-images/smallpoints.JPG') }}" alt=""></td>
+                <td valign="middle" class="darkblue" style="width: 90%; font-size: 18px;">{!! str_replace("<< Last Name >>", $coverPage['lastname'], $mediaAgreement['statement_one']) !!}</td>
+            </tr>
+        @endif
+        @if(!empty($mediaAgreement['statement_two']))
+            <tr>
+                <td style="width:10%;" valign="top"><img src="{{ public_path('pdf-images/smallpoints.JPG') }}" alt=""></td>
+                <td valign="middle" class="darkblue" style="width: 90%; font-size: 18px;">{!! str_replace("<< Last Name >>", $coverPage['lastname'], $mediaAgreement['statement_two']) !!}</td>
+            </tr>
+        @endif
+        @if(!empty($mediaAgreement['statement_three']))
+            <tr>
+                <td style="width:10%;" valign="top"><img src="{{ public_path('pdf-images/smallpoints.JPG') }}" alt=""></td>
+                <td valign="middle" class="darkblue" style="width: 90%; font-size: 18px;">{!! str_replace("<< Last Name >>", $coverPage['lastname'], $mediaAgreement['statement_three']) !!}</td>
+            </tr>
+        @endif
+        @if(!empty($mediaAgreement['statement_four']))
+            <tr>
+                <td style="width:10%;" valign="top"><img src="{{ public_path('pdf-images/smallpoints.JPG') }}" alt=""></td>
+                <td valign="middle" class="darkblue" style="width: 90%; font-size: 18px;">{!! str_replace("<< Last Name >>", $coverPage['lastname'], $mediaAgreement['statement_four']) !!}</td>
+            </tr>
+        @endif
+        @if(!empty($mediaAgreement['statement_five']))
+            <tr>
+                <td style="width:10%;" valign="top"><img src="{{ public_path('pdf-images/smallpoints.JPG') }}" alt=""></td>
+                <td valign="middle" class="darkblue" style="width: 90%; font-size: 18px;">{!! str_replace("<< Last Name >>", $coverPage['lastname'], $mediaAgreement['statement_five']) !!}</td>
+            </tr>
+        @endif
+        @if(!empty($mediaAgreement['statement_six']))
+            <tr>
+                <td style="width:10%;" valign="top"><img src="{{ public_path('pdf-images/smallpoints.JPG') }}" alt=""></td>
+                <td valign="middle" class="darkblue" style="width: 90%; font-size: 18px;">{!! str_replace("<< Last Name >>", $coverPage['lastname'], $mediaAgreement['statement_six']) !!}</td>
+            </tr>
+        @endif
+        @if(!empty($mediaAgreement['statement_seven']))
+            <tr>
+                <td style="width:10%;" valign="top"><img src="{{ public_path('pdf-images/smallpoints.JPG') }}" alt=""></td>
+                <td valign="middle" class="darkblue" style="width: 90%; font-size: 18px;">{!! str_replace("<< Last Name >>", $coverPage['lastname'], $mediaAgreement['statement_seven']) !!}</td>
+            </tr>
+        @endif
+        @if(!empty($mediaAgreement['statement_eight']))
+            <tr>
+                <td style="width:10%;" valign="top"><img src="{{ public_path('pdf-images/smallpoints.JPG') }}" alt=""></td>
+                <td valign="middle" class="darkblue" style="width: 90%; font-size: 18px;">{!! str_replace("<< Last Name >>", $coverPage['lastname'], $mediaAgreement['statement_eight']) !!}</td>
+            </tr>
+        @endif
+        @if(!empty($mediaAgreement['statement_nine']))
+            <tr>
+                <td style="width:10%;" valign="top"><img src="{{ public_path('pdf-images/smallpoints.JPG') }}" alt=""></td>
+                <td valign="middle" class="darkblue" style="width: 90%; font-size: 18px;">{!! str_replace("<< Last Name >>", $coverPage['lastname'], $mediaAgreement['statement_nine']) !!}</td>
+            </tr>
+        @endif
+        @if(!empty($mediaAgreement['statement_ten']))
+            <tr>
+                <td style="width:10%;" valign="top"><img src="{{ public_path('pdf-images/smallpoints.JPG') }}" alt=""></td>
+                <td valign="middle" class="darkblue" style="width: 90%; font-size: 18px;">{!! str_replace("<< Last Name >>", $coverPage['lastname'], $mediaAgreement['statement_ten']) !!}</td>
+            </tr>
+        @endif
+    </table>
+    {{-- <div>{{ dd($note) }}</div> --}}
+    {{-- <table style="width: 100%; margin-top: 10px; line-height: 1.3;" class="row w-100" cellpadding="12" cellspacing="8">
+        <tr>
+            <td style="width:10%;" valign="top"><img src="{{ public_path('pdf-images/smallpoints.JPG') }}" alt=""></td>
+            <td valign="middle" class="darkblue" style="width: 90%; font-size: 18px;">I agree to use devices only during the times agreed to.</td>
+        </tr>
+        <tr>
+            <td style="width:10%;" valign="top"><img src="{{ public_path('pdf-images/smallpoints.JPG') }}" alt=""></td>
+            <td valign="middle" class="darkblue" style="width:90%; font-size: 18px;">I agree to put away devices during the following times: Meal Time, Family Time (Games, movies, etc.) and when we have guests.</td>
+        </tr>
+        <tr>
+            <td style="width:10%;" valign="top"><img src="{{ public_path('pdf-images/smallpoints.JPG') }}" alt=""></td>
+            <td valign="middle" class="darkblue" style="width:90%; font-size: 18px;">I agree to refrain from using devices when it is dangerous such as driving, biking or walking.</td>
+        </tr>
+        <tr>
+            <td style="width:10%;" valign="top"><img src="{{ public_path('pdf-images/smallpoints.JPG') }}" alt=""></td>
+            <td valign="middle" class="darkblue" style="width:90%; font-size: 18px;">I agree to respect other’s privacy and not post pictures or videos of someone on social media without their permission.</td>
+        </tr>
+        <tr>
+            <td style="width:10%;" valign="top"><img src="{{ public_path('pdf-images/smallpoints.JPG') }}" alt=""></td>
+            <td valign="middle" class="darkblue" style="width:90%; font-size: 18px;">I agree to show my parents what sites I am using so we can explore them together.</td>
+        </tr>
+        <tr>
+            <td style="width:10%;" valign="top"><img src="{{ public_path('pdf-images/smallpoints.JPG') }}" alt=""></td>
+            <td valign="middle" class="darkblue" style="width:90%; font-size: 18px;">I agree to listen calmly and openly when discussing online situations or rules.</td>
+        </tr>
+        <tr>
+            <td style="width:10%;" valign="top"><img src="{{ public_path('pdf-images/smallpoints.JPG') }}" alt=""></td>
+            <td valign="middle" class="darkblue" style="width:90%; font-size: 18px;">I will not give out any personal information to people I don’t know including: Full Name, Passwords, Phone Numbers and/or Addresses.</td>
+        </tr>
+        <tr>
+            <td style="width:10%;" valign="top"><img src="{{ public_path('pdf-images/smallpoints.JPG') }}" alt=""></td>
+            <td valign="middle" class="darkblue" style="width:90%; font-size: 18px;">I will keep passwords private (except for my parents) and I agree not to change them.</td>
+        </tr>
+        <tr>
+            <td style="width:10%;" valign="top"><img src="{{ public_path('pdf-images/smallpoints.JPG') }}" alt=""></td>
+            <td valign="middle" class="darkblue" style="width:90%; font-size: 18px;">I agree to voluntarily give up my rights to devices if I violate any terms of this agreement. </td>
+        </tr>
+    </table> --}}
+
+    <table style="width: 100%;margin-top:115px;" class="row w-100" cellpadding="12" cellspacing="0">
+
+    </table>
+
+    {{-- <table style="width: 100%;margin-top:25px;" class="row w-100" cellpadding="12" cellspacing="0">
+
+        <tr>
+            <td class="blue" style="width:5%;"></td>
+            <td class="blue" style="width:18%; text-align: center; font-size: 28px;">Family</td>
+            <td class="" style="width:40%; text-align: center; font-size: 32px;">___________________</td>
+            <td class="" style="width:40%; text-align: center; font-size: 28px;">___________________</td>
+        </tr>
+        <tr>
+            <td class="blue" style="width:5%;"></td>
+            <td class="blue" style="width:18%; text-align: center; font-size: 28px;">Family</td>
+            <td class="" style="width:50%; text-align: center; font-size: 28px;">Noah Benjamin Langhofer</td>
+            <td class="" style="width:50%; text-align: center; font-size: 28px;">Elizebeth Grace Langhofer</td>
+        </tr>
+
+    </table>
+
+    <table style="width: 100%;margin-top:25px;" class="row w-100" cellpadding="12" cellspacing="0">
+
+        <tr>
+            <td class="blue" style="width:25%;"></td>
+            <td class="blue" style="width:18%; text-align: center; font-size: 28px;">Family</td>
+            <td class="" style="width:40%; text-align: center; font-size: 32px;">___________________</td>
+            <td class="" style="width:40%; text-align: center; font-size: 28px;">___________________</td>
+        </tr>
+        <tr>
+            <td class="blue" style="width:25%;"></td>
+            <td class="blue" style="width:18%; text-align: center; font-size: 28px;">Family</td>
+            <td class="" style="width:50%; text-align: center; font-size: 28px;">Isaac Rome Langhofer</td>
+            <td class="" style="width:50%; text-align: center; font-size: 28px;">Elizebeth Grace Langhofer</td>
+        </tr>
+
+    </table> --}}
+    @if(isset($familyBios->childrens) && $familyBios->childrens->count() > 4)
+        @php
+            $offset = 3;
+        @endphp
+        @for ($i = 0; $i < ceil($familyBios->childrens->count()/$offset); $i++)
+            <table style="width: 100%; margin-top: 12px; line-height: 1.5;" class="row w-100" cellpadding="12" cellspacing="0">
+                <tr>
+                    @php
+                        $children = $familyBios->childrens->skip($i*$offset)->take($offset);
+                    @endphp
+                    <td style="width: 5%;"></td>
+                    @foreach ($children as $child)
+                        @if (!$loop->first)
+                            <td style="width: 3%;"></td>
+                        @endif
+                        <td style="width: 15%; font-weight: bold;">
+                            <table>
+                                <tr>
+                                    <td valign="bottom">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td valign="top" style="border-top: 2px #000 solid; padding-top:5px; font-size: 24px">{{ $child->full_name }}</td>
+                                </tr>
+                            </table>
+                        </td>
+                    @endforeach
+                    @for ($j = 0; $j < $children->count()-$offset; $j++)
+                        <td style="width: 3%;"></td>
+                        <td style="width: 15%; font-weight: bold;">
+                            <table>
+                                <tr>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        </td>
+                    @endfor
+                    <td style="width: 5%;"></td>
+                </tr>
+            </table>
+        @endfor
+    @elseif(isset($familyBios->childrens))
+        <table style="width: 100%; margin-top: 95px; line-height: 1.5;" class="row w-100" cellpadding="12" cellspacing="0">
+            <tr>
+                <td style="width: 5%;"></td>
+                <td style="width: 35%; font-weight: bold;">@isset($familyBios->childrens[0])<hr/> @endisset</td>
+                <td style="width: 15%;"></td>
+                <td style="width: 35%; font-weight: bold;">@isset($familyBios->childrens[1])<hr/> @endisset</td>
+            </tr>
+            <tr>
+                <td style="width: 5%;"></td>
+                <td style="width: 35%; font-size: 28px;">@isset($familyBios->childrens[0]){{ $familyBios->childrens[0]->full_name }} @endisset</td>
+                <td style="width: 15%;"></td>
+                <td style="width: 35%; font-size: 28px;">@isset($familyBios->childrens[1]){{ $familyBios->childrens[1]->full_name }} @endisset</td>
+            </tr>
+        </table>
+        <table style="width: 100%; margin-top: 25px; line-height: 1.5;" class="row w-100" cellpadding="12" cellspacing="0">
+            <tr>
+                <td style="width: 5%;"></td>
+                <td style="width: 35%; font-weight: bold;">@isset($familyBios->childrens[2])<hr/> @endisset</td>
+                <td style="width: 15%;"></td>
+                <td style="width: 35%; font-weight: bold;">@isset($familyBios->childrens[3])<hr/> @endisset</td>
+            </tr>
+            <tr>
+                <td style="width: 5%;"></td>
+                <td style="width: 35%; font-size: 28px;">@isset($familyBios->childrens[2]){{ $familyBios->childrens[2]->full_name }} @endisset</td>
+                <td style="width: 15%;"></td>
+                <td style="width: 35%; font-size: 28px;">@isset($familyBios->childrens[3]){{ $familyBios->childrens[3]->full_name }} @endisset</td>
+            </tr>
+        </table>
+    @endif
+</page>

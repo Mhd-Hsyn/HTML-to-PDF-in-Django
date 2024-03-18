@@ -1,0 +1,21 @@
+<style>
+  .page-break {
+      page-break-after: always;
+  }
+  /* .page {
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+  } */
+</style>
+@foreach ($images as $image)  
+  <page backtop="15mm"backbottom="15mm" backleft="10mm" backright="10mm"
+    backimg="{{ $image['image'] }}" backimgx="0mm" backimgh="10mm" orientation="{{ $image['orientation'] }}" backimgw="100%">
+  </page>
+  {{-- <div class="page" style="background-image: url({{ $image['image'] }})"></div> --}}
+  {{-- <img src="{{ $image }}" class="page" />
+  @if(!$loop->last) <div class="page-break"></div> @endif --}}
+@endforeach
+
+

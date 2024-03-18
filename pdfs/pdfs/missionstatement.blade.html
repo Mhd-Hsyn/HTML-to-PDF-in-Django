@@ -1,0 +1,141 @@
+<style type="text/css">
+    .text {
+        color: #b17d41;
+    }
+
+    .w-10 {
+        text-align: center;
+        margin-top: 5%;
+        margin-bottom: 3%;
+    }
+
+    .w-20 {
+        text-align: center;
+        margin-top: 10%;
+    }
+
+    .p-font-size {
+        font-size: 24px;
+    }
+
+    .row {
+        display: contents;
+    }
+
+    .pfbg {
+        background: #22272E;
+    }
+
+    .w-100 {
+        width: 100%;
+    }
+
+    .blue {
+        color: #118ab2;
+    }
+
+    .darkblue {
+        color: #073b4c;
+    }
+    .bluenew{
+        color: #175f87;
+    }
+    .orange {
+        color: #ffd166;
+    }
+    /* .missionStatemet {
+        font-family: 'odinrounded';
+        font-size: 21px;
+    } */
+</style>
+<page backtop="15mm" class="missionStatemet" backbottom="15mm" backleft="10mm" backright="10mm" backimg="{{ public_path('pdf-images/missionstate.png') }}" backimgx="0mm" backimgh="10mm" orientation="L" backimgw="100%">
+    {{-- <page_header>
+    </page_header> --}}
+    {{-- <page_footer>
+
+        <table class="page_footer row pfbg" cellpadding="12" cellspacing="0">
+            <tr>
+                <td style="width: 50%; color: #fff; font-size: 18px;padding: 10px auto 10px 10px;"> The {!! $lastname !!} Family Handbook</td>
+                <td style="width: 10%; color: #fff; font-size: 18px;padding: 10px 10px 10px auto;">[[page_cu]]</td>
+                <td style="width: 18%"></td>
+                <td style="width: 22%; color: #fff; font-size: 18px;padding: 10px auto 10px 10px;">
+                    @php $logo = public_path("storage/".$logo) @endphp
+                    @if (file_exists($logo))
+                        <img src="{{ $logo }}" alt="" height="40">
+                    @endif
+                </td>
+            </tr>
+        </table>
+    </page_footer> --}}
+    <div style="margin-top:-60px; text-align: center;">
+        <h5 style="font-size: 50px;font-weight: bold; font-family: times; text-transform: uppercase;">
+            {{-- The  Family --}}
+            @php
+                $heading = $missionStatement['heading'];
+                $heading = str_replace("<< Last Name >>", $lastname, $heading);
+                $heading = str_replace("&lt;&lt; Last Name &gt;&gt;", $lastname, $heading);
+                if(strpos($heading, "<") === false)
+                    $heading = "<p><span style=' color: #175f87;text-align: center; font-size: 42px;'>{$heading}</span></p>"
+            @endphp
+            {{-- @dd($missionStatement['heading']) --}}
+           {!! $heading !!}
+            <!--THE FAMILY -->
+        </h5>
+        <h5 style="margin-top:-95px; color:white; font-size: 50px; font-weight: 700; font-family: times;">Mission Statement</h5>
+    </div>
+    {{--
+        <!--<div style="margin-top:-70px; text-align: center;">-->
+        <!--    <h5 style=" color:white; font-size: 50px; font-weight: 700; font-family: times;">Mission Statement</h5>-->
+        <!--</div>-->
+        <!--<table cellpadding="12" cellspacing="0">-->
+        <!--    <tr>-->
+        <!--        <td class="bluenew" style="width: 100%; text-align: center; font-weight: bold; font-size: 85px;">-->
+        <!--            {!! str_replace("&lt;&lt; Last Name &gt;&gt;", $lastname, str_replace("<< Last Name >>", $lastname, $missionStatement['heading'])) !!}-->
+        <!--        </td>-->
+        <!--    </tr>-->
+        <!--</table>-->
+        <!--<table cellpadding="12" cellspacing="0">-->
+        <!--    <tr>-->
+        <!--        <td style="width: 100%;text-transform:uppercase; text-align:center; padding: 20px;font-size:30px;color:#fff;font-weight:100;" >-->
+        <!--             Mission Statement-->
+        <!--        </td>-->
+        <!--    </tr>-->
+        <!--</table>-->
+    --}}
+    <table style="margin-top: 0px;" class="row w-100" cellpadding="12" cellspacing="0">
+        <tr>
+            <td style="width: 10%;"></td>
+            <td style="width: 80%;"></td>
+            <td style="width: 10%;"></td>
+        </tr>
+        <tr>
+            <td style="min-width:5%;max-width:10%">&nbsp;</td>
+            <td style="width:80%;border: 7px solid #073B4C;text-align: center; padding: 20px 10px 10px 20px;  min-height: 4000px !important; color: #073b4c; line-height: 1.5; font-size: 30px;margin-bottom:60px;">
+                {{-- @dd(1, $missionStatement) --}}
+                {{-- sd --}}
+                @php
+                    $note = str_replace("<< Last Name >>", $lastname, $missionStatement['note']);
+                    $note = str_replace("&lt;&lt; Last Name &gt;&gt;", $lastname, $note);
+                    $note = str_replace("<div>", "<span>", $note);
+                    $note = str_replace("</div>", "</span><br/>", $note);
+                    $note = str_replace("<br /><br /><br />", "<br />", $note,);
+                    // $note = str_replace("font-size: 30px", "font-size: 20px", $note);
+                    $note = rtrim($note, "<br />");
+                    $note = rtrim($note, "<br/>");
+                    $l = strlen($note);
+                    if(substr_compare($note, "</span", $l - 6) === 0) $note = $note.">";
+                    if(substr_compare($note, "</p", $l - 3) === 0) $note = $note.">";
+                    $check = false;
+                    if(strpos($note, "<") === false)
+                        $note = "<p><span style='color: #073b4c; line-height: 1.5; font-size: 30px;'>{$note}</span></p>"
+                @endphp
+                {{-- @dd($note) --}}
+                {!! $note !!}
+                {{-- <br> --}}
+                {{-- <br> --}}
+                {{-- <br> --}}
+            </td>
+            <td style="min-width:5%;max-width:10%">&nbsp;</td>
+        </tr>
+    </table>
+</page>
